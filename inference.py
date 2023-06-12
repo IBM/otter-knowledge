@@ -52,21 +52,19 @@ def get_embeddings(sequences, net, initial_model, relation_map,
 if __name__ == '__main__':
     # %% getting parameters
     parser = argparse.ArgumentParser(description='Inference')
-    parser.add_argument('--test', default='data/test_protein.csv',
+    parser.add_argument('--test', required=True,
                         type=str,
-                        help='Path to the test csv file with the sequence/smiles')
+                        help='Path to the csv file with the sequence/smiles')
     parser.add_argument('--sequence_column', default='Target', type=str,
-                        help='name of the column with sequence/smiles information for proteins or molecules')
+                        help='Name of the column with sequence/smiles information for proteins or molecules')
     parser.add_argument('--input_type', default='Protein', type=str,
-                        help='Drug or Protein')
-    parser.add_argument('--relation_name', default='sequence', type=str,
-                        help='Name of the relations regarding the sequences/smiles data property used during pretraining.')
-    parser.add_argument('--model_path', default='ibm/otter_ubc_classifier', type=str,
-                        help='')
-    parser.add_argument('--output_path', default='data/entities_embeddings.json', type=str,
+                        help='Type of the sequences. Options: Drug; Protein')
+    parser.add_argument('--model_path', default='ibm/otter_dude_classifier', type=str,
+                        help='Path to the model or name of the model in the HuggingfaceHub')
+    parser.add_argument('--output_path', required=True, type=str,
                         help='Path to the output embedding file.')
     parser.add_argument('--batch_size', default=2, type=int, help='Batch size used during initial embedding computing.')
-    parser.add_argument('--no_cuda', action="store_true", help="If set to True cuda won't be used even if available.")
+    parser.add_argument('--no_cuda', action="store_true", help="If set to True, CUDA won't be used even if available.")
 
     args, unknown = parser.parse_known_args()
 
