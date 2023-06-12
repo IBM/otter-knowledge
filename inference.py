@@ -52,7 +52,7 @@ def get_embeddings(sequences, net, initial_model, relation_map,
 if __name__ == '__main__':
     # %% getting parameters
     parser = argparse.ArgumentParser(description='Inference')
-    parser.add_argument('--test', required=True,
+    parser.add_argument('--input_path', required=True,
                         type=str,
                         help='Path to the csv file with the sequence/smiles')
     parser.add_argument('--sequence_column', default='Target', type=str,
@@ -100,7 +100,7 @@ if __name__ == '__main__':
         'Target': {}
     }
     # load test data from a csv file
-    test_data = InputDataset(args.test, args.sequence_column)
+    test_data = InputDataset(args.input_path, args.sequence_column)
     test_data = DataLoader(test_data, batch_size=args.batch_size, shuffle=False)
     for data in tqdm(test_data):
         embedding, initial_embeddings = get_embeddings(sequences=data, net=net,
@@ -113,7 +113,7 @@ if __name__ == '__main__':
                 embeddings['Target'][s] = torch.concat([e, ie]).cpu().tolist()
             else:
                 embeddings['Drug'][s] = torch.concat([e, ie]).cpu().tolist()
-        break
+
     output_name = args.output_path
     print('Saving embeddings to', output_name)
     with open(output_name, 'wt') as f:

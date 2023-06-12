@@ -20,7 +20,7 @@ class ProjectionTypes(str, Enum):
     def __str__(self):
         return self.value
     PROJECTION = "projection"
-    NULL = "Null"
+    NULL = "null"
 
 
 class Node(torch.nn.Module):
