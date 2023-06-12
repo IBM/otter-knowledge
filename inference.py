@@ -1,5 +1,6 @@
 import argparse
 import json
+import os.path
 import time
 from typing import Union, Optional
 
@@ -10,6 +11,7 @@ from tqdm import tqdm
 from data_utils.dataset import InputDataset
 from embeddings.esm import ESMProtein
 from embeddings.morgan_fingerprint import MorganFingerprint
+from models.load_from_hub import load_from_hub
 
 
 def get_embeddings(sequences, net, initial_model, relation_map,
@@ -59,7 +61,7 @@ if __name__ == '__main__':
                         help='Drug or Protein')
     parser.add_argument('--relation_name', default='sequence', type=str,
                         help='Name of the relations regarding the sequences/smiles data property used during pretraining.')
-    parser.add_argument('--model_path', default='../../models/', type=str,
+    parser.add_argument('--model_path', default='ibm/otter_ubc_classifier', type=str,
                         help='')
     parser.add_argument('--output_path', default='data/entities_embeddings.json', type=str,
                         help='Path to the output embedding file.')
@@ -79,13 +81,22 @@ if __name__ == '__main__':
         initial_model = MorganFingerprint()
 
     start = time.time()
-    print("Loading model from", args.model_path+"/model.pt.all")
-    # net = torch.load(args.model_path+"/model.pt.all")
-    net = torch.load("../../models/model.pt")
-    # relation map read from the json file in the checkpoint path
-    with open(args.model_path+"/relation_map.json") as f:
-        print("Loading relation map from", args.model_path + "/relation_map.json")
-        relation_map = json.load(f)
+    if os.path.exists(args.model_path) and os.path.isdir(args.model_path):
+        model_path = os.path.join(args.model_path, "model.pt")
+        relation_map_path = os.path.join(args.model_path, "relation_map.json")
+        print("Loading model from", model_path)
+        net = torch.load(model_path, map_location=torch.device(device))
+        # relation map read from the json file in the checkpoint path
+        with open(relation_map_path) as f:
+            print("Loading relation map from", relation_map_path)
+            relation_map = json.load(f)
+    else:
+        print("Path not found, trying to download it from the Hub:")
+        model_file, relation_map = load_from_hub(args.model_path)
+        net = torch.load(model_file, map_location=torch.device(device))
+        with open(relation_map) as f:
+            relation_map = json.load(f)
+
     embeddings = {
         'Drug': {},
         'Target': {}
