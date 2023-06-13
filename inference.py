@@ -63,7 +63,7 @@ if __name__ == '__main__':
                         help='Path to the model or name of the model in the HuggingfaceHub')
     parser.add_argument('--output_path', required=True, type=str,
                         help='Path to the output embedding file.')
-    parser.add_argument('--batch_size', default=2, type=int, help='Batch size used during initial embedding computing.')
+    parser.add_argument('--batch_size', default=2, type=int, help='Batch size to use.')
     parser.add_argument('--no_cuda', action="store_true", help="If set to True, CUDA won't be used even if available.")
 
     args, unknown = parser.parse_known_args()
