@@ -59,7 +59,7 @@ if __name__ == '__main__':
                         help='Name of the column with sequence/smiles information for proteins or molecules')
     parser.add_argument('--input_type', default='Protein', type=str,
                         help='Type of the sequences. Options: Drug; Protein')
-    parser.add_argument('--model_path', default='ibm/otter_dude_classifier', type=str,
+    parser.add_argument('--model_path', default='ibm/otter_ubc_distmult', type=str,
                         help='Path to the model or name of the model in the HuggingfaceHub')
     parser.add_argument('--output_path', required=True, type=str,
                         help='Path to the output embedding file.')
@@ -95,6 +95,7 @@ if __name__ == '__main__':
         with open(relation_map) as f:
             relation_map = json.load(f)
 
+    net.eval()
     embeddings = {
         'Drug': {},
         'Target': {}

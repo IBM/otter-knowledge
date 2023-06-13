@@ -30,5 +30,7 @@ class ESMProtein(torch.nn.Module):
         # NOTE: token 0 is always a beginning-of-sequence token, so the first residue is token 1.
         sequence_representations = []
         for i, seq in enumerate(results['contacts']):
-            sequence_representations.append(token_representations[i, 1: len(seq) + 1].mean(0))
+            seq_len = (tensors[i] == 2).nonzero()
+            sequence_representations.append(token_representations[i, 1: seq_len].mean(0))
+
         return torch.stack(sequence_representations)
