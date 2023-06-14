@@ -57,6 +57,7 @@ For link prediction, we consider three choices of scoring functions: DistMult, T
 | [otter_dude_classifier](https://huggingface.co/ibm/otter_dude_classifier)       |  DUDe   | Classifier Head |     No      |     Yes      |     No     |
 
 #### Models results:
+<div align="center">
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -66,7 +67,6 @@ For link prediction, we consider three choices of scoring functions: DistMult, T
 .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
 .tg .tg-0pky{border-color:inherit;text-align:center;vertical-align:centr;text-emphasis:bold}
 </style>
-<div align="center">
     <table class="tg">
     <thead>
       <tr>
