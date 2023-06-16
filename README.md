@@ -172,6 +172,20 @@ For link prediction, we consider three choices of scoring functions: DistMult, T
     </table>
 </div>
 
+## How to use it
+
+### Installation
+Clone the repo:
+```
+git clone https://github.com/IBM/otter-knowledge.git
+cd otter-knowledge
+```
+
+Install the requirements:
+```
+pip install -r requirements.txt
+```
+
 ### Run inference
 ```
 usage: inference.py [-h] --input_path INPUT_PATH [--sequence_column SEQUENCE_COLUMN] [--input_type INPUT_TYPE] [--model_path MODEL_PATH] --output_path OUTPUT_PATH [--batch_size BATCH_SIZE] [--no_cuda]
