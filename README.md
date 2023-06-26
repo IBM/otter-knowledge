@@ -1,5 +1,5 @@
 # Otter Knowledge
-Source code for the paper: [Otter-Knowledge: benchmarks of multimodal knowledge graph representation learning from different sources for drug discovery](https://arxiv.org/abs/2306.12802)
+The link to the preprint of our work: [Otter-Knowledge: benchmarks of multimodal knowledge graph representation learning from different sources for drug discovery](https://arxiv.org/abs/2306.12802)
 
 Knowledge-enhanced learned representation enriches protein sequence and SMILES drug databases with a large multi-modal Knowledge Graph fused from different sources. This improves results on TDC drug target binding affinity prediction benchmarks.
 
@@ -170,6 +170,16 @@ For link prediction, we consider three choices of scoring functions: DistMult, T
         <td class="tg-c3ow">0.641</td>
         <td class="tg-c3ow">0.630</td>
       </tr>
+      <tr>
+        <td class="tg-0pky"><a href="https://huggingface.co/ibm/otter_dude_classifier">otter-knowledge-ensemble</a></td>
+        <td class="tg-c3ow">0.588</td>
+        <td class="tg-c3ow">0.839</td>
+        <td class="tg-c3ow">0.578</td>
+        <td class="tg-c3ow">0.168</td>
+        <td class="tg-c3ow">0.886</td>
+        <td class="tg-c3ow">0.678</td>
+        <td class="tg-c3ow">0.638</td>
+      </tr>
     </tbody>
     </table>
 </div>
@@ -244,7 +254,6 @@ We assume that you have used the [inference script](#run-inference) to generate 
             0.7447476387023926,
             -0.27911311388015747]
 	},
-	"Target": {
 	"Target": {
         "MTLDVGPEDELPDWAAAKEFYQKYDPKDVIGRGVSSVVRRCVHRATGHE": [
             -0.46595990657806396,
