@@ -59,7 +59,7 @@ For link prediction, we consider three choices of scoring functions: DistMult, T
 | [otter_dude_classifier](https://huggingface.co/ibm/otter_dude_classifier)       |  DUDe   | Classifier Head |     No      |     Yes      |     No     |
 
 #### Models results:
-<div align="center">
+<div align="left">
     <table class="tg">
     <thead>
       <tr>
@@ -79,6 +79,26 @@ For link prediction, we consider three choices of scoring functions: DistMult, T
         <td class="tg-c3ow">Random</td>
         <td class="tg-c3ow">Target</td>
         <td class="tg-c3ow">Drug</td>
+      </tr>
+      <tr>
+        <td class="tg-0pky"><a href="https://tdcommons.ai/benchmark/dti_dg_group/bindingdb_patent/">TDC LeaderBoard</a></td>
+        <td class="tg-c3ow">0.538</td>
+        <td class="tg-c3ow">NA</td>
+        <td class="tg-c3ow">NA</td>
+        <td class="tg-c3ow">NA</td>
+        <td class="tg-c3ow">NA</td>
+        <td class="tg-c3ow">NA</td>
+        <td class="tg-c3ow">NA</td>
+      </tr>
+	 <tr>
+        <td class="tg-0pky"><a>ESM+Morgan-Fingerprint</a></td>
+        <td class="tg-c3ow">0.569</td>
+        <td class="tg-c3ow">0.805</td>
+        <td class="tg-c3ow">0.554</td>
+        <td class="tg-c3ow">0.264</td>
+        <td class="tg-c3ow">0.852</td>
+        <td class="tg-c3ow">0.630</td>
+        <td class="tg-c3ow">0.576</td>
       </tr>
       <tr>
         <td class="tg-0pky"><a href="https://huggingface.co/ibm/otter_ubc_distmult">otter_ubc_distmult</a></td>
@@ -171,7 +191,7 @@ For link prediction, we consider three choices of scoring functions: DistMult, T
         <td class="tg-c3ow">0.630</td>
       </tr>
       <tr>
-        <td class="tg-0pky"><a href="https://huggingface.co/ibm/otter_dude_classifier">otter-knowledge-ensemble</a></td>
+        <td class="tg-0pky"><a>otter-knowledge-ensemble</a></td>
         <td class="tg-c3ow">0.588</td>
         <td class="tg-c3ow">0.839</td>
         <td class="tg-c3ow">0.578</td>
