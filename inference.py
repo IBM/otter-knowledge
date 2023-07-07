@@ -60,7 +60,7 @@ if __name__ == '__main__':
     parser.add_argument('--input_type', default='Protein', type=str,
                         help='Type of the sequences. Options: Drug; Protein')
     parser.add_argument('--model_path', default='ibm/otter_ubc_distmult', type=str,
-                        help='Path to the model or name of the model in the HuggingfaceHub')
+                        help='Path to the model or name of the model in the Hugging Face Hub')
     parser.add_argument('--output_path', required=True, type=str,
                         help='Path to the output embedding file.')
     parser.add_argument('--batch_size', default=2, type=int, help='Batch size to use.')
