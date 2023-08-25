@@ -1,0 +1,144 @@
+{
+  "namespaces": {
+    "schema": "https://www.ad.drl.ie.ibm.com/",
+    "uniprot": "https://www.uniprot.org/uniprot/",
+    "interpro": "https://www.ebi.ac.uk/interpro/entry/InterPro/",
+    "pdb": "https://www.rcsb.org/structure/",
+    "geneontology": "http://amigo.geneontology.org/amigo/term/",
+    "chembl": "https://www.ebi.ac.uk/chembl/target_report_card/",
+    "taxonomy": "https://www.ad.drl.ie.ibm.com/uniprotTaxonomy/",
+    "organism": "https://www.ad.drl.ie.ibm.com/uniprotOrganism/",
+    "chebi": "http://identifiers.org/chebi/",
+    "drugbank": "https://go.drugbank.com/drugs/",
+    "mesh": "http://purl.bioontology.org/ontology/MESH/",
+    "mim": "https://www.omim.org/entry/",
+    "bindingdb": "https://bdb.ad.drl.ie.ibm.com/"
+  },
+  "entities": [
+    {
+      "entity_name": "Protein",
+      "namespace": "uniprot",
+      "key_specifying_entity_id": "_source.old_id",
+      "modality": "Protein",
+      "origin": {
+        "type": "deepsearch",
+        "query": "*:*",
+        "elastic_id": "default",
+        "index_key": "uniprot",
+        "limit_entries": -1,
+        "kg": "https://www.uniprot.org/uniprot/"
+      },
+      "data_properties": [
+        {
+          "property_name": "label",
+          "path": "_source.old_recommendedName_fullName"
+        },
+        {
+          "property_name": "organism",
+          "path": "_source.old_organism_name"
+        },
+        {
+          "property_name": "sequence",
+          "path": "_source.old_seq",
+          "modality": "protein-sequence-mean"
+        },
+        {
+          "property_name": "comment_function",
+          "path": "_source.old_comment_function"
+        },
+        {
+          "property_name": "comment_catalyticactivity",
+          "path": "_source.old_comment_catalyticactivity"
+        },
+        {
+          "property_name": "length",
+          "path": "_source.old_length",
+          "modality": "number"
+        },
+        {
+          "property_name": "protein_families",
+          "path": "_source.old_protein_families"
+        },
+        {
+          "property_name": "pathway",
+          "path": "_source.old_pathway"
+        }
+      ],
+      "object_properties": [
+        {
+          "property_name": "interactant",
+          "path": "_source.old_interactant",
+          "__comment": "path points to a List[str]",
+          "target_namespace": "uniprot",
+          "target_modality": "Protein"
+        },
+        {
+          "property_name": "target_of",
+          "path": "_source.old_dbxrefs.DrugBank",
+          "__comment": "path points to a List[str]",
+          "target_namespace": "drugbank",
+          "target_modality": "Drug"
+        },
+        {
+          "property_name": "target_of",
+          "path": "_source.old_dbxrefs.ChEMBL",
+          "target_namespace": "chembl",
+          "target_modality": "Drug"
+        }
+      ]
+    },
+    {
+      "entity_name": "Drug",
+      "namespace": "chembl",
+      "key_specifying_entity_id": "id",
+      "modality": "Drug",
+      "origin": {
+        "type": "csv",
+        "delimiter": ",",
+        "__comment": "/Users/vanlopez/GitHub/MultiModalKG/data/opentargets-chembl/opentargets_chembl_no_empty_smiles.csv",
+        "file_path": "/dccstor/mkg/data/chembl/opentargets_chembl_no_empty_smiles.csv"
+      },
+      "data_properties": [
+        {
+          "property_name": "calculated_property.SMILES",
+          "path": "\"canonicalSmiles\"",
+          "modality": "morgan-fingerprint"
+        }
+      ],
+      "object_properties": [
+        {
+          "property_name": "sameAs",
+          "path": "\"crossReferences-drugbank\"",
+          "target_namespace": "drugbank",
+          "target_modality": "Drug"
+        }
+      ]
+    },
+    {
+      "entity_name": "DrugBDB",
+      "namespace": "bindingdb",
+      "key_specifying_entity_id": "\"BindingDB MonomerID\"",
+      "modality": "DrugBDB",
+      "origin": {
+        "type": "csv",
+        "delimiter": "\t",
+        "file_path": "/dccstor/mkg/data/bindingdb/BindingDB_All_clean_non_overlapping.tsv"
+      },
+      "data_properties": [
+        {
+          "property_name": "calculated_property.SMILES",
+          "path": "\"Ligand SMILES\"",
+          "modality": "morgan-fingerprint"
+        }
+      ],
+      "object_properties": [
+        {
+          "property_name": "binding_to",
+          "path": "\"UniProt (SwissProt) Primary ID of Target Chain\"",
+          "target_namespace": "uniprot",
+          "target_modality": "Protein"
+        }
+      ]
+    }
+  ]
+}
