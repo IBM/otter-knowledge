@@ -1,5 +1,6 @@
 # Otter Knowledge
 The link to the preprint of our work: [Otter-Knowledge: benchmarks of multimodal knowledge graph representation learning from different sources for drug discovery](https://arxiv.org/abs/2306.12802)
+AAAI 2024: [Knowledge Enhance Representation Learning for Drug Discovery](https://ojs.aaai.org/index.php/AAAI/article/view/28924/)
 
 Knowledge-enhanced learned representation enriches protein sequence and SMILES drug databases with a large multi-modal Knowledge Graph fused from different sources. This improves results on TDC drug target binding affinity prediction benchmarks.
 
