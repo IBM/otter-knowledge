@@ -7,3 +7,4 @@ torch-sparse==0.6.17
 pandas
 rdkit
 transformers
+urllib3>=2.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
